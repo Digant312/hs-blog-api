@@ -17,7 +17,7 @@ app.use(cors());
 app.get('/blogs/v3/topics', (req, res) => {
     axios.get(`https://api.hubapi.com/blogs/v3/topics?hapikey=${serverhapikey}`, { params: req.query})
       .then(response => {
-        const responseJson = JSON.stringify(response.data);
+        const responseJson = response.data;
         res.status(200).send(responseJson);
       })
       .catch(error => {

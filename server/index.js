@@ -1,10 +1,14 @@
 const express = require('express');
 var cors = require('cors');
 const axios = require('axios');
+var serverhapikey = '';
 
-const {hapikey} = require('./config')
-
-const serverhapikey = process.env.hapikey || hapikey;
+if(process.env.NODE_ENV !== 'production'){
+  const {hapikey} = require('./config');
+  serverhapikey = hapikey;
+} else {
+  serverhapikey = process.env.hapikey;
+}
 
 const app = express();
 
